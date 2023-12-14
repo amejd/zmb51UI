@@ -1,0 +1,251 @@
+<mvc:View
+    controllerName="zmb51ui.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    	xmlns:u="sap.ui.unified"
+			xmlns:l="sap.ui.layout"
+			xmlns:html="http://www.w3.org/1999/xhtml"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <!-- Define the Smart Filter bar -->
+        <sfb:SmartFilterBar
+            id="smartFilterBar"
+            entitySet="ZCDS_CN_MSEG"
+            basicSearchFieldName="Article"
+            persistencyKey="UniqueAndStablePersistencyKey"
+        >
+            <sfb:controlConfiguration>
+                <sfb:ControlConfiguration
+                    id="_IDGenControlConfiguration2"
+					index="1"
+                    key="Article"
+                    label="Article"
+                    visibleInAdvancedArea="true"
+                    filterType="multiple"
+                />
+                <sfb:ControlConfiguration
+                    id="_IDGenControlConfiguration5"
+					index="2"
+                    key="GrpMarchandise"
+                    label="Groupe de Marchandise"
+                    visibleInAdvancedArea="true"
+                    filterType="multiple"
+                    mandatory="mandatory"
+                />
+                <sfb:ControlConfiguration
+                    id="_IDGenControlConfiguration3"
+					index="3"
+                    key="Division"
+                    label="Division"
+                    visibleInAdvancedArea="true"
+                    filterType="multiple"
+                />
+                <sfb:ControlConfiguration
+                    id="_IDGenControlConfiguration9"
+					index="4"
+                    key="MVT"
+                    label="Code de Mouvement"
+                    visibleInAdvancedArea="true"
+                    filterType="multiple"
+                />
+                <sfb:ControlConfiguration
+                    id="_IDGenControlConfiguration0"
+					index="5"
+                    key="DateComptable"
+                    label="Date comptable"
+                    visibleInAdvancedArea="true"
+                    filterType="interval"
+                    mandatory="mandatory"
+                />
+            </sfb:controlConfiguration>
+        </sfb:SmartFilterBar>
+        <!-- Table below -->
+		 <html:a id="hiddenLink"></html:a>
+        <table:Table id="table"
+				rows="{/}"
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<table:extension>
+					<OverflowToolbar id="_IDGenOverflowToolbar1" style="Clear">
+						<Title id="title" text="Donnees article"/>
+						<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+						<Button id="_IDGenButton1" type="Accept" press="onExtractDataJS" icon="sap-icon://excel-attachment"/>
+					</OverflowToolbar>
+				</table:extension>
+				<table:columns>
+				
+                    <table:Column id="_IDGenColumn1" width="11rem">
+						<Label id="_IDGenLabel1" text="{i18n>Division}" />
+						<table:template>
+							<Text id="_IDGenText1" text="{Division}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn2" width="11rem">
+						<Label id="_IDGenLabel2" text="{i18n>Article}" />
+						<table:template>
+							<Link id="_IDGenLink1" text="{Article}" press="onNavigateMM03" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn3" width="11rem">
+						<Label id="_IDGenLabel3" text="{i18n>DescriptionArticle}" />
+						<table:template>
+							<Text id="_IDGenText3" text="{DescriptionArticle}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn4" width="11rem">
+						<Label id="_IDGenLabel4" text="{i18n>GrpMarchandise}" />
+						<table:template>
+							<Text id="_IDGenText4" text="{GrpMarchandise}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn5" width="11rem">
+						<Label id="_IDGenLabel5" text="{i18n>DescGrpMarchandise}" />
+						<table:template>
+							<Text id="_IDGenText5" text="{DescGrpMarchandise}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn6" width="11rem">
+						<Label id="_IDGenLabel6" text="{i18n>Magasin}" />
+						<table:template>
+							<Text id="_IDGenText6" text="{Magasin}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn7" width="11rem">
+						<Label id="_IDGenLabel7" text="{i18n>MVT}" />
+						<table:template>
+							<Text id="_IDGenText7" text="{MVT}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn8" width="11rem">
+						<Label id="_IDGenLabel8" text="{i18n>NumeroDoc}" />
+						<table:template>
+							<Link id="_IDGenLink2" text="{NumeroDoc}" press="onNavigateF1077" />
+							
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn9" width="11rem">
+						<Label id="_IDGenLabel9" text="{i18n>Poste}" />
+						<table:template>
+							<Text id="_IDGenText9" text="{Poste}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn10" width="11rem">
+						<Label id="_IDGenLabel10" text="{i18n>DateComptable}" />
+						<table:template>
+							<Text id="_IDGenText10" text="{DateComptable}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn11" width="11rem">
+						<Label id="_IDGenLabel11" text="{i18n>QteEnUQS}" />
+						<table:template>
+							<Text id="_IDGenText11" text="{QteEnUQS}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                     <table:Column id="_IDGenColumn12" width="11rem">
+						<Label id="_IDGenLabel12" text="{i18n>UQDeSaisie}" />
+						<table:template>
+							<Text id="_IDGenText12" text="{UQDeSaisie}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                     <table:Column id="_IDGenColumn13" width="11rem">
+						<Label id="_IDGenLabel13" text="{i18n>LotFournisseur}" />
+						<table:template>
+							<Link id="_IDGenLink3" text="{LotFournisseur}" press="onNavigateBMBC" />
+							
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn14" width="11rem">
+						<Label id="_IDGenLabel14" text="{i18n>LotQualite}" />
+						<table:template>
+							<Link id="_IDGenLink4" text="{LotQualite}" press="onNavigateMSC3N" />
+							
+						</table:template>
+					</table:Column>
+
+                     <table:Column id="_IDGenColumn15" width="11rem">
+						<Label id="_IDGenLabel15" text="{i18n>QteEnUQ}" />
+						<table:template>
+							<Text id="_IDGenText15" text="{QteEnUQ}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn16" width="11rem">
+						<Label id="_IDGenLabel16" text="{i18n>UQDeBase}" />
+						<table:template>
+							<Text id="_IDGenText16" text="{UQDeBase}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn17" width="11rem">
+						<Label id="_IDGenLabel17" text="{i18n>MontantAchat}" />
+						<table:template>
+							<Text id="_IDGenText17" text="{MontantAchat}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn18" width="11rem">
+						<Label id="_IDGenLabel18" text="{i18n>Devise}" />
+						<table:template>
+							<Text id="_IDGenText18" text="{Devise}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn19" width="11rem">
+						<Label id="_IDGenLabel19" text="{i18n>Quantite}" />
+						<table:template>
+							<Text id="_IDGenText19" text="{Quantite}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn20" width="11rem">
+						<Label id="_IDGenLabel20" text="{i18n>UQVar}" />
+						<table:template>
+							<Text id="_IDGenText20" text="{UQVar}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn21" width="11rem">
+						<Label id="_IDGenLabel21" text="{i18n>ZClient}" />
+						<table:template>
+							<Text id="_IDGenText21" text="{ZClient}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn22" width="11rem">
+						<Label id="_IDGenLabel22" text="{i18n>NomClient}" />
+						<table:template>
+							<Text id="_IDGenText22" text="{NomClient}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn23" width="11rem">
+						<Label id="_IDGenLabel23" text="{i18n>Fournisseur}" />
+						<table:template>
+							<Text id="_IDGenText23" text="{Fournisseur}" wrapping="false" />
+						</table:template>
+					</table:Column>
+
+                    <table:Column id="_IDGenColumn24" width="11rem">
+						<Label id="_IDGenLabel24" text="{i18n>CdeAch}" />
+						<table:template>
+						<Link id="_IDGenLink5" text="{CdeAch}" press="onNavigateME23N" />
+							
+						</table:template>
+					</table:Column>
+
+				</table:columns>
+			</table:Table>
+			<BusyDialog id="BusyDialog" />
+        
+    </Page>
+</mvc:View>
