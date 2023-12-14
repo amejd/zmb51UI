@@ -76,7 +76,7 @@
 				ariaLabelledBy="title">
 				<table:extension>
 					<OverflowToolbar id="_IDGenOverflowToolbar1" style="Clear">
-						<Title id="title" text="Donnees article"/>
+						<Title id="title" text="{i18n>titleTable}"/>
 						<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
 						<Button id="_IDGenButton1" type="Accept" press="onExtractDataJS" icon="sap-icon://excel-attachment"/>
 					</OverflowToolbar>

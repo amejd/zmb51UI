@@ -82,7 +82,7 @@ sap.ui.define([
 
                                     return entry;
                                 })
-                                that.getView().byId('title').setText(`Donnees article (${oData.results.length})`)
+                                that.getView().byId('title').setText(`${that.getOwnerComponent().getModel("i18n").getResourceBundle().getText("titleTable")} (${oData.results.length})`)
                                 that.getView().byId("table").setModel(jModel);
                                 oDialog.close();
                             }
@@ -339,7 +339,7 @@ sap.ui.define([
                                             <th style="width: 10em; border: 1px solid black;">UQ de base</th>
                                             <th style="width: 10em; border: 1px solid black;">Montant achat</th>
                                             <th style="width: 10em; border: 1px solid black;">Devise</th>
-                                            <th style="width: 10em; border: 1px solid black;">Quantité</th>
+                                            <th style="width: 10em; border: 1px solid black;">${oResourceBundle.getText("Quantite")}</th>
                                             <th style="width: 10em; border: 1px solid black;">UQ var</th>
                                             <th style="width: 10em; border: 1px solid black;">Client</th>
                                             <th style="width: 10em; border: 1px solid black;">Nom du client</th>
