@@ -83,19 +83,13 @@
 				</table:extension>
 				<table:columns>
 				
-                    <table:Column id="_IDGenColumn1" width="11rem">
-						<Label id="_IDGenLabel1" text="{i18n>Division}" />
-						<table:template>
-							<Text id="_IDGenText1" text="{Division}" wrapping="false" />
-						</table:template>
-					</table:Column>
                     <table:Column id="_IDGenColumn2" width="11rem">
 						<Label id="_IDGenLabel2" text="{i18n>Article}" />
 						<table:template>
 							<Link id="_IDGenLink1" text="{Article}" press="onNavigateMM03" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn3" width="11rem">
+					<table:Column id="_IDGenColumn3" width="11rem">
 						<Label id="_IDGenLabel3" text="{i18n>DescriptionArticle}" />
 						<table:template>
 							<Text id="_IDGenText3" text="{DescriptionArticle}" wrapping="false" />
@@ -113,7 +107,12 @@
 							<Text id="_IDGenText5" text="{DescGrpMarchandise}" wrapping="false" />
 						</table:template>
 					</table:Column>
-
+                    <table:Column id="_IDGenColumn1" width="11rem">
+						<Label id="_IDGenLabel1" text="{i18n>Division}" />
+						<table:template>
+							<Text id="_IDGenText1" text="{Division}" wrapping="false" />
+						</table:template>
+					</table:Column>
                     <table:Column id="_IDGenColumn6" width="11rem">
 						<Label id="_IDGenLabel6" text="{i18n>Magasin}" />
 						<table:template>
@@ -163,7 +162,6 @@
 						<Label id="_IDGenLabel13" text="{i18n>LotFournisseur}" />
 						<table:template>
 							<Link id="_IDGenLink3" text="{LotFournisseur}" press="onNavigateBMBC" />
-							
 						</table:template>
 					</table:Column>
 
