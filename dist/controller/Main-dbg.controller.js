@@ -82,6 +82,20 @@ sap.ui.define([
 
                                     return entry;
                                 })
+
+                                // Sorting
+                                oData.results.sort((a, b) => {
+                                    const Poste1 = a.Poste;
+                                    const Poste2 = b.Poste;
+
+                                    if (Poste1 < Poste2) {
+                                        return -1;
+                                    } else if (Poste1 > Poste2) {
+                                        return 1;
+                                    } else {
+                                        return 0;
+                                    }
+                                });
                                 that.getView().byId('title').setText(`${that.getOwnerComponent().getModel("i18n").getResourceBundle().getText("titleTable")} (${oData.results.length})`)
                                 that.getView().byId("table").setModel(jModel);
                                 oDialog.close();
@@ -96,7 +110,7 @@ sap.ui.define([
 
                 }, { passive: true });
 
-                
+
             },
             onExtractDataJS: function () {
                 const oDialog = this.getView().byId("BusyDialog");
@@ -118,6 +132,7 @@ sap.ui.define([
                 // Check filters
                 if (!sGrpMarchandise && !sDateComptable) {
                     MessageToast.show("Aucun des filtres obligatoires n'a été sélectionné.")
+                    oDialog.close();
                     return;
                 }
 
@@ -145,15 +160,19 @@ sap.ui.define([
                     // console.log(oBinding.oList);
                     // debugger
                     const htmlCode = this._onGetHTMLCodeOfExcel(oArticle, oGrpMarchandise, oDivision, oMVT, oDateComptable, oBinding.oList)
-                    // Setting the file name
+                    // const blobHtml = new Blob(['Hello world'],  { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+                    // console.log(blobHtml);
+                    // aHyperlink.href = window.URL.createObjectURL(blobHtml);
+                    // // Setting the file name
                     aHyperlink.href = `data:${dataType}, ${htmlCode}`;
                     aHyperlink.download = `Extraction-${this._formatDate(new Date())}.xls`;
-                    //triggering the function
+                    // //triggering the function
                     aHyperlink.click();
                     oDialog.close()
                 } else {
                     // No data is bound
                     MessageToast.show("No data bound ")
+                    oDialog.close();
                     return;
                 }
 
@@ -321,11 +340,11 @@ sap.ui.define([
                                     <table id="customersTable" style="font-family:arial, sans-serif;border: 1px solid black; border-collapse: collapse;">
                                     <thead>
                                         <tr>
+                                        <th style="width: 10em; border: 1px solid black;">Article</th>
+                                        <th style="width: 15em; border: 1px solid black;">Description article</th>
+                                        <th style="width: 15em; border: 1px solid black;">Groupe de marchandise</th>
+                                        <th style="width: 20em; border: 1px solid black;">Description groupe de marchandise</th>
                                             <th style="width: 10em; border: 1px solid black;">Division</th>
-                                            <th style="width: 10em; border: 1px solid black;">Article</th>
-                                            <th style="width: 15em; border: 1px solid black;">Description article</th>
-                                            <th style="width: 15em; border: 1px solid black;">Groupe de marchandise</th>
-                                            <th style="width: 20em; border: 1px solid black;">Description groupe de marchandise</th>
                                             <th style="width: 10em; border: 1px solid black;">Magasin</th>
                                             <th style="width: 10em; border: 1px solid black;">MVT</th>
                                             <th style="width: 10em; border: 1px solid black;">Document article</th>
@@ -350,13 +369,13 @@ sap.ui.define([
                                     <tbody>
                                    
                                             ${fData && fData.map((e) => {
-                return (
-                    `<tr>
-                                                            <td style="border: 1px solid black;text-align:center;">${e.Division}</td>
+                    return (
+                        `<tr>
                                                             <td style="border: 1px solid black;text-align:center;">${e.Article}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.DescriptionArticle}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.GrpMarchandise}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.DescGrpMarchandise}</td>
+                                                            <td style="border: 1px solid black;text-align:center;">${e.Division}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.Magasin}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.MVT}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.NumeroDoc}</td>
@@ -377,9 +396,9 @@ sap.ui.define([
                                                             <td style="border: 1px solid black;text-align:center;">${e.Fournisseur}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.CdeAch}</td>                                                            
                                                         </tr>`
-                )
-            }).join('')
-            }
+                    )
+                }).join('')
+                    }
                                             
                                             
                                  
@@ -388,7 +407,7 @@ sap.ui.define([
                                 </div>
                                 `
 
-                
+
                 let fullHTML = `
                 <!DOCTYPE html>
                 <html lang="en">
@@ -406,7 +425,7 @@ sap.ui.define([
                 `
 
                 htmlCode = fullHTML.replace(/ /g, "%20");
-            return htmlCode
-        }
+                return htmlCode
+            }
         });
     });
