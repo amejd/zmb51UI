@@ -252,7 +252,7 @@ sap.ui.define([
                 const xnavservice = sap.ushell && sap.ushell.Container.getService && sap.ushell.Container.getService("CrossApplicationNavigation")
                 const href = (xnavservice && xnavservice.hrefForExternal({
                     target: {
-                        semanticObject: 'ZSO_ME23N',
+                        semanticObject: 'ZSO_ZTRCME23N',
                         action: 'display'
                     },
                     params: {
