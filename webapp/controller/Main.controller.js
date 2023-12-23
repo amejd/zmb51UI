@@ -32,9 +32,14 @@ sap.ui.define([
                     const sDivision = oSmartTableFilter.getFilterData().Division;
                     const sMVT = oSmartTableFilter.getFilterData().MVT;
                     const sDateComptable = oSmartTableFilter.getFilterData().DateComptable;
+                    console.log(sGrpMarchandise);
+                    console.log(sArticle);
+                    if (!sGrpMarchandise && !sArticle) {
+                        alert('One of Article or Grp should be used !')
+                        oDialog.close()
+                        return;
+                    }
 
-
-                    // debuggers
                     // Prepare the filters
                     let Filters = new Array();
                     // debugger
@@ -348,22 +353,24 @@ sap.ui.define([
                                             <th style="width: 10em; border: 1px solid black;">Magasin</th>
                                             <th style="width: 10em; border: 1px solid black;">MVT</th>
                                             <th style="width: 10em; border: 1px solid black;">Document article</th>
+                                            <th style="width: 10em; border: 1px solid black;">Document d'achat</th>
                                             <th style="width: 10em; border: 1px solid black;">Poste</th>
                                             <th style="width: 10em; border: 1px solid black;">Date comptable</th>
                                             <th style="width: 10em; border: 1px solid black;">${oResourceBundle.getText("QteEnUQS")}</th>
                                             <th style="width: 10em; border: 1px solid black;">UQ de saisie</th>
-                                            <th style="width: 10em; border: 1px solid black;">Lot fournisseur</th>
-                                            <th style="width: 20em; border: 1px solid black;">${oResourceBundle.getText("LotQualite")}</th>
                                             <th style="width: 15em; border: 1px solid black;">Qte unite de base (UQ)</th>
                                             <th style="width: 10em; border: 1px solid black;">UQ de base</th>
+                                            <th style="width: 10em; border: 1px solid black;">UQ var</th>
+                                            <th style="width: 10em; border: 1px solid black;">Lot fournisseur</th>
+                                            <th style="width: 20em; border: 1px solid black;">${oResourceBundle.getText("LotQualite")}</th>
+                                            
                                             <th style="width: 10em; border: 1px solid black;">Montant achat</th>
                                             <th style="width: 10em; border: 1px solid black;">Devise</th>
                                             <th style="width: 10em; border: 1px solid black;">${oResourceBundle.getText("Quantite")}</th>
-                                            <th style="width: 10em; border: 1px solid black;">UQ var</th>
                                             <th style="width: 10em; border: 1px solid black;">Client</th>
                                             <th style="width: 10em; border: 1px solid black;">Nom du client</th>
                                             <th style="width: 10em; border: 1px solid black;">Fournisseur</th>
-                                            <th style="width: 10em; border: 1px solid black;">Document d'achat</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -379,22 +386,23 @@ sap.ui.define([
                                                             <td style="border: 1px solid black;text-align:center;">${e.Magasin}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.MVT}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.NumeroDoc}</td>
+                                                            <td style="border: 1px solid black;text-align:center;">${e.CdeAch}</td>   
                                                             <td style="border: 1px solid black;text-align:center;">${e.Poste}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.DateComptable}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.QteEnUQS}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.UQDeSaisie}</td>
-                                                            <td style="border: 1px solid black;text-align:center;">${e.LotFournisseur}</td>
-                                                            <td style="border: 1px solid black;text-align:center;">${e.LotQualite}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.QteEnUQ}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.UQDeBase}</td>
+                                                            <td style="border: 1px solid black;text-align:center;">${e.UQVar}</td>
+                                                            <td style="border: 1px solid black;text-align:center;">${e.LotFournisseur}</td>
+                                                            <td style="border: 1px solid black;text-align:center;">${e.LotQualite}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.MontantAchat}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.Devise}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.Quantite}</td>
-                                                            <td style="border: 1px solid black;text-align:center;">${e.UQVar}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.ZClient}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.NomClient}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.Fournisseur}</td>
-                                                            <td style="border: 1px solid black;text-align:center;">${e.CdeAch}</td>                                                            
+                                                                                                                     
                                                         </tr>`
                     )
                 }).join('')
@@ -426,6 +434,28 @@ sap.ui.define([
 
                 htmlCode = fullHTML.replace(/ /g, "%20");
                 return htmlCode
+            },
+            onClearAllFilters: function () {
+                // Get the table
+                const oTable = this.byId("table");
+                const oListBinding = oTable.getBinding();
+                // Clear selection
+                oTable.clearSelection();
+               
+                if (oListBinding) {
+                    oListBinding.aSorters = null;
+                    oListBinding.aFilters = null;
+                }
+
+                for (let iColCounter = 0; iColCounter < oTable.getColumns().length; iColCounter++) {
+                    oTable.getColumns()[iColCounter].setSorted(false);
+                    oTable.getColumns()[iColCounter].setFilterValue("");
+                    oTable.getColumns()[iColCounter].setFiltered(false);
+                }
+
+                // Update Binding
+                // Remove any filters
+                oListBinding.filter([]);
             }
         });
     });
