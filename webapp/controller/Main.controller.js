@@ -6,12 +6,13 @@ sap.ui.define([
     'sap/m/MessageToast',
     'sap/ui/model/json/JSONModel',
     'sap/ui/export/Spreadsheet',
-    'sap/ui/core/format/NumberFormat'
+    'sap/ui/core/format/NumberFormat',
+    "sap/m/MessageBox",
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Filter, FilterOperator, DateFormat, MessageToast, JSONModel, Spreadsheet, NumberFormat) {
+    function (Controller, Filter, FilterOperator, DateFormat, MessageToast, JSONModel, Spreadsheet, NumberFormat, MessageBox) {
         "use strict";
 
         return Controller.extend("zmb51ui.controller.Main", {
@@ -35,7 +36,7 @@ sap.ui.define([
                     console.log(sGrpMarchandise);
                     console.log(sArticle);
                     if (!sGrpMarchandise && !sArticle) {
-                        alert('One of Article or Grp should be used !')
+                        MessageBox.error(that.getOwnerComponent().getModel("i18n").getResourceBundle().getText("errMsg"));
                         oDialog.close()
                         return;
                     }

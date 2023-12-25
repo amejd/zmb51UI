@@ -35,10 +35,10 @@
                     id="_IDGenControlConfiguration5"
 					index="2"
                     key="GrpMarchandise"
-                    label="Groupe de Marchandise"
+                    label="Groupe de Marchandise *"
                     visibleInAdvancedArea="true"
                     filterType="multiple"
-                    mandatory="mandatory"
+					
                 />
                 <sfb:ControlConfiguration
                     id="_IDGenControlConfiguration3"
@@ -68,104 +68,164 @@
             </sfb:controlConfiguration>
         </sfb:SmartFilterBar>
         <!-- Table below -->
-		 <html:a id="hiddenLink"></html:a>
+
+
+		<!-- <smartTable:SmartTable id="LineItemsSmartTable" entitySet="ZCDS_CN_MSEG" 
+		initiallyVisibleFields="Article,DescriptionArticle,GrpMarchandise,DescGrpMarchandise"
+		smartFilterId="smartFilterBar" tableType="Table" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true"> -->
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+				<!-- <smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData> -->
+				<!-- <Table id="_IDGenTable1" mode="MultiSelect" selectionChange="onGeneratedRowSelectionChange">
+					<columns>
+						<Column id="_IDGenColumn1">
+							<customData>
+								<core:CustomData key="p13nData"
+								value='\{"columnKey": "Article","leadingProperty": "Article","sortProperty": "Article","filterProperty": "Article"}'/>
+							</customData>
+							<Label id="_IDGenLabel1" text="{i18n>Article}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="_IDGenColumnListItem1">
+							<cells>
+								<Link id="_IDGenLink1" text="{Article}" press="onNavigateMM03" />
+								
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>-->
+		<!-- </smartTable:SmartTable> -->
+
+
+
+		 <html:a id="hiddenLink"></html:a> 
         <table:Table id="table"
 				rows="{/}"
 				selectionMode="MultiToggle"
 				paste="onPaste"
+				visibleRowCount="17"
 				ariaLabelledBy="title">
 				<table:extension>
 					<OverflowToolbar id="_IDGenOverflowToolbar1" style="Clear">
 						<Title id="title" text="{i18n>titleTable}"/>
 						<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
-						<Button id="_IDGenButton1" type="Accept" press="onExtractDataJS" icon="sap-icon://excel-attachment"/>
+							<Button id="_IDGenButton2"
+							icon="sap-icon://refresh"
+							tooltip="Effacer tous les filtres"
+							press="onClearAllFilters"/>
+						<Button id="_IDGenButton1" type="Accept" press="onExtractDataJS" tooltip="Extraire en Excel" icon="sap-icon://excel-attachment"/>
 					</OverflowToolbar>
 				</table:extension>
 				<table:columns>
-				
-                    <table:Column id="_IDGenColumn2" width="11rem">
-						<Label id="_IDGenLabel2" text="{i18n>Article}" />
+                    <table:Column id="_IDGenColumn2" width="6rem" sortProperty="Article" filterProperty="Article" defaultFilterOperator="StartsWith">
+						<Label id="_IDGenLabel2" text="{i18n>Article}"/>
 						<table:template>
 							<Link id="_IDGenLink1" text="{Article}" press="onNavigateMM03" />
 						</table:template>
 					</table:Column>
-					<table:Column id="_IDGenColumn3" width="11rem">
+					<table:Column id="_IDGenColumn3" width="6rem" sortProperty="DescriptionArticle" filterProperty="DescriptionArticle" defaultFilterOperator="StartsWith" >
 						<Label id="_IDGenLabel3" text="{i18n>DescriptionArticle}" />
 						<table:template>
 							<Text id="_IDGenText3" text="{DescriptionArticle}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn4" width="11rem">
+                    <table:Column id="_IDGenColumn4" width="6rem" sortProperty="GrpMarchandise" filterProperty="GrpMarchandise" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel4" text="{i18n>GrpMarchandise}" />
 						<table:template>
 							<Text id="_IDGenText4" text="{GrpMarchandise}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn5" width="11rem">
+                    <table:Column id="_IDGenColumn5" width="6rem" sortProperty="DescGrpMarchandise" filterProperty="DescGrpMarchandise" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel5" text="{i18n>DescGrpMarchandise}" />
 						<table:template>
 							<Text id="_IDGenText5" text="{DescGrpMarchandise}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn1" width="11rem">
+                    <table:Column id="_IDGenColumn1" width="6rem" sortProperty="Division" filterProperty="Division" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel1" text="{i18n>Division}" />
 						<table:template>
 							<Text id="_IDGenText1" text="{Division}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn6" width="11rem">
+                    <table:Column id="_IDGenColumn6" width="6rem" sortProperty="Magasin" filterProperty="Magasin" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel6" text="{i18n>Magasin}" />
 						<table:template>
 							<Text id="_IDGenText6" text="{Magasin}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn7" width="11rem">
+                    <table:Column id="_IDGenColumn7" width="6rem" sortProperty="MVT" filterProperty="MVT" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel7" text="{i18n>MVT}" />
 						<table:template>
 							<Text id="_IDGenText7" text="{MVT}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn8" width="11rem">
+                    <table:Column id="_IDGenColumn8" width="6rem"  sortProperty="NumeroDoc" filterProperty="NumeroDoc" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel8" text="{i18n>NumeroDoc}" />
 						<table:template>
 							<Link id="_IDGenLink2" text="{NumeroDoc}" press="onNavigateF1077" />
 							
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn9" width="11rem">
+					<table:Column id="_IDGenColumn24" width="6rem" sortProperty="CdeAch" filterProperty="CdeAch" defaultFilterOperator="StartsWith">
+						<Label id="_IDGenLabel24" text="{i18n>CdeAch}" />
+						<table:template>
+						<Link id="_IDGenLink5" text="{CdeAch}" press="onNavigateME23N" />
+							
+						</table:template>
+					</table:Column>
+                    <table:Column id="_IDGenColumn9" width="6rem" sortProperty="Poste" filterProperty="Poste" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel9" text="{i18n>Poste}" />
 						<table:template>
 							<Text id="_IDGenText9" text="{Poste}" wrapping="false" />
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn10" width="11rem">
+                    <table:Column id="_IDGenColumn10" width="6rem" sortProperty="DateComptable" filterProperty="DateComptable" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel10" text="{i18n>DateComptable}" />
 						<table:template>
 							<Text id="_IDGenText10" text="{DateComptable}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn11" width="11rem">
+                    <table:Column id="_IDGenColumn11" width="6rem" sortProperty="QteEnUQS" filterProperty="QteEnUQS" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel11" text="{i18n>QteEnUQS}" />
 						<table:template>
 							<Text id="_IDGenText11" text="{QteEnUQS}" wrapping="false" />
 						</table:template>
 					</table:Column>
-
-                     <table:Column id="_IDGenColumn12" width="11rem">
+                     <table:Column id="_IDGenColumn12" width="6rem" sortProperty="UQDeSaisie" filterProperty="UQDeSaisie" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel12" text="{i18n>UQDeSaisie}" />
 						<table:template>
 							<Text id="_IDGenText12" text="{UQDeSaisie}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                     <table:Column id="_IDGenColumn13" width="11rem">
+					 <table:Column id="_IDGenColumn15" width="6rem" sortProperty="QteEnUQ" filterProperty="QteEnUQ" defaultFilterOperator="StartsWith">
+						<Label id="_IDGenLabel15" text="{i18n>QteEnUQ}" />
+						<table:template>
+							<Text id="_IDGenText15" text="{QteEnUQ}" wrapping="false" />
+						</table:template>
+					</table:Column>
+					 <table:Column id="_IDGenColumn16" width="6rem" sortProperty="UQDeBase" filterProperty="UQDeBase" defaultFilterOperator="StartsWith">
+						<Label id="_IDGenLabel16" text="{i18n>UQDeBase}" />
+						<table:template>
+							<Text id="_IDGenText16" text="{UQDeBase}" wrapping="false" />
+						</table:template>
+					</table:Column>
+					 <table:Column id="_IDGenColumn20" width="6rem" sortProperty="UQVar" filterProperty="UQVar" defaultFilterOperator="StartsWith">
+						<Label id="_IDGenLabel20" text="{i18n>UQVar}" />
+						<table:template>
+							<Text id="_IDGenText20" text="{UQVar}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                     <table:Column id="_IDGenColumn13" width="6rem"  sortProperty="LotFournisseur" filterProperty="LotFournisseur" defaultFilterOperator="StartsWith" >
 						<Label id="_IDGenLabel13" text="{i18n>LotFournisseur}" />
 						<table:template>
 							<Link id="_IDGenLink3" text="{LotFournisseur}" press="onNavigateBMBC" />
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn14" width="11rem">
+                    <table:Column id="_IDGenColumn14" width="6rem"  sortProperty="LotQualite" filterProperty="LotQualite" defaultFilterOperator="StartsWith">
 						<Label id="_IDGenLabel14" text="{i18n>LotQualite}" />
 						<table:template>
 							<Link id="_IDGenLink4" text="{LotQualite}" press="onNavigateMSC3N" />
@@ -173,73 +233,48 @@
 						</table:template>
 					</table:Column>
 
-                     <table:Column id="_IDGenColumn15" width="11rem">
-						<Label id="_IDGenLabel15" text="{i18n>QteEnUQ}" />
-						<table:template>
-							<Text id="_IDGenText15" text="{QteEnUQ}" wrapping="false" />
-						</table:template>
-					</table:Column>
-
-                    <table:Column id="_IDGenColumn16" width="11rem">
-						<Label id="_IDGenLabel16" text="{i18n>UQDeBase}" />
-						<table:template>
-							<Text id="_IDGenText16" text="{UQDeBase}" wrapping="false" />
-						</table:template>
-					</table:Column>
-
-                    <table:Column id="_IDGenColumn17" width="11rem">
+                    <table:Column id="_IDGenColumn17" width="6rem">
 						<Label id="_IDGenLabel17" text="{i18n>MontantAchat}" />
 						<table:template>
 							<Text id="_IDGenText17" text="{MontantAchat}" wrapping="false" />
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn18" width="11rem">
+                    <table:Column id="_IDGenColumn18" width="6rem">
 						<Label id="_IDGenLabel18" text="{i18n>Devise}" />
 						<table:template>
 							<Text id="_IDGenText18" text="{Devise}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn19" width="11rem">
+                    <table:Column id="_IDGenColumn19" width="6rem">
 						<Label id="_IDGenLabel19" text="{i18n>Quantite}" />
 						<table:template>
 							<Text id="_IDGenText19" text="{Quantite}" wrapping="false" />
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn20" width="11rem">
-						<Label id="_IDGenLabel20" text="{i18n>UQVar}" />
-						<table:template>
-							<Text id="_IDGenText20" text="{UQVar}" wrapping="false" />
-						</table:template>
-					</table:Column>
-                    <table:Column id="_IDGenColumn21" width="11rem">
+                   
+                    <table:Column id="_IDGenColumn21" width="6rem"  sortProperty="ZClient">
 						<Label id="_IDGenLabel21" text="{i18n>ZClient}" />
 						<table:template>
 							<Text id="_IDGenText21" text="{ZClient}" wrapping="false" />
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn22" width="11rem">
+                    <table:Column id="_IDGenColumn22" width="6rem"  sortProperty="NomClient">
 						<Label id="_IDGenLabel22" text="{i18n>NomClient}" />
 						<table:template>
 							<Text id="_IDGenText22" text="{NomClient}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn23" width="11rem">
+                    <table:Column id="_IDGenColumn23" width="6rem">
 						<Label id="_IDGenLabel23" text="{i18n>Fournisseur}" />
 						<table:template>
 							<Text id="_IDGenText23" text="{Fournisseur}" wrapping="false" />
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn24" width="11rem">
-						<Label id="_IDGenLabel24" text="{i18n>CdeAch}" />
-						<table:template>
-						<Link id="_IDGenLink5" text="{CdeAch}" press="onNavigateME23N" />
-							
-						</table:template>
-					</table:Column>
+                    
 
 				</table:columns>
 			</table:Table>
