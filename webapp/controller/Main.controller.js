@@ -35,7 +35,7 @@ sap.ui.define([
                     const sDateComptable = oSmartTableFilter.getFilterData().DateComptable;
                     console.log(sGrpMarchandise);
                     console.log(sArticle);
-                    if (!sGrpMarchandise && !sArticle) {
+                    if (!sGrpMarchandise && !sArticle) { 
                         MessageBox.error(that.getOwnerComponent().getModel("i18n").getResourceBundle().getText("errMsg"));
                         oDialog.close()
                         return;
@@ -43,7 +43,7 @@ sap.ui.define([
 
                     // Prepare the filters
                     let Filters = new Array();
-                    // debugger
+                    
                     sArticle && sArticle.items.map((e) => e.text).map((article) => {
                         Filters.push(
                             that._onGetFilters(article, "Article")

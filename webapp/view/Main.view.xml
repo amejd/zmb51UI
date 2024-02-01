@@ -35,7 +35,7 @@
                     id="_IDGenControlConfiguration5"
 					index="2"
                     key="GrpMarchandise"
-                    label="Groupe de Marchandise *"
+                    label="Groupe de Marchandise"
                     visibleInAdvancedArea="true"
                     filterType="multiple"
 					
@@ -68,37 +68,6 @@
             </sfb:controlConfiguration>
         </sfb:SmartFilterBar>
         <!-- Table below -->
-
-
-		<!-- <smartTable:SmartTable id="LineItemsSmartTable" entitySet="ZCDS_CN_MSEG" 
-		initiallyVisibleFields="Article,DescriptionArticle,GrpMarchandise,DescGrpMarchandise"
-		smartFilterId="smartFilterBar" tableType="Table" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true"> -->
-				<!-- layout data used to make the table growing but the filter bar fixed -->
-				<!-- <smartTable:layoutData>
-					<FlexItemData growFactor="1" baseSize="0%"/>
-				</smartTable:layoutData> -->
-				<!-- <Table id="_IDGenTable1" mode="MultiSelect" selectionChange="onGeneratedRowSelectionChange">
-					<columns>
-						<Column id="_IDGenColumn1">
-							<customData>
-								<core:CustomData key="p13nData"
-								value='\{"columnKey": "Article","leadingProperty": "Article","sortProperty": "Article","filterProperty": "Article"}'/>
-							</customData>
-							<Label id="_IDGenLabel1" text="{i18n>Article}"/>
-						</Column>
-					</columns>
-					<items>
-						<ColumnListItem id="_IDGenColumnListItem1">
-							<cells>
-								<Link id="_IDGenLink1" text="{Article}" press="onNavigateMM03" />
-								
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>-->
-		<!-- </smartTable:SmartTable> -->
-
-
 
 		 <html:a id="hiddenLink"></html:a> 
         <table:Table id="table"
@@ -253,7 +222,6 @@
 						</table:template>
 					</table:Column>
 
-                   
                     <table:Column id="_IDGenColumn21" width="6rem"  sortProperty="ZClient">
 						<Label id="_IDGenLabel21" text="{i18n>ZClient}" />
 						<table:template>
@@ -273,8 +241,6 @@
 							<Text id="_IDGenText23" text="{Fournisseur}" wrapping="false" />
 						</table:template>
 					</table:Column>
-
-                    
 
 				</table:columns>
 			</table:Table>
