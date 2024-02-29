@@ -7,9 +7,9 @@
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:core="sap.ui.core"
     xmlns:table="sap.ui.table"
-    	xmlns:u="sap.ui.unified"
-			xmlns:l="sap.ui.layout"
-			xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:u="sap.ui.unified"
+	xmlns:l="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml"
 >
     <Page
         id="page"
@@ -222,23 +222,29 @@
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn21" width="6rem"  sortProperty="ZClient">
+                    <table:Column id="_IDGenColumn21" width="6rem"  sortProperty="ZClient" filterProperty="ZClient">
 						<Label id="_IDGenLabel21" text="{i18n>ZClient}" />
 						<table:template>
 							<Text id="_IDGenText21" text="{ZClient}" wrapping="false" />
 						</table:template>
 					</table:Column>
 
-                    <table:Column id="_IDGenColumn22" width="6rem"  sortProperty="NomClient">
+                    <table:Column id="_IDGenColumn22" width="6rem" filterProperty="NomClient" sortProperty="NomClient">
 						<Label id="_IDGenLabel22" text="{i18n>NomClient}" />
 						<table:template>
 							<Text id="_IDGenText22" text="{NomClient}" wrapping="false" />
 						</table:template>
 					</table:Column>
-                    <table:Column id="_IDGenColumn23" width="6rem">
+                    <table:Column id="_IDGenColumn23" width="6rem" sortProperty="Fournisseur" filterProperty="Fournisseur">
 						<Label id="_IDGenLabel23" text="{i18n>Fournisseur}" />
 						<table:template>
 							<Text id="_IDGenText23" text="{Fournisseur}" wrapping="false" />
+						</table:template>
+					</table:Column>
+					<table:Column id="_IDGenColumn243" width="6rem" sortProperty="LotEntreposageExt" filterProperty="LotEntreposageExt">
+						<Label id="_IDGenLabel25" text="{i18n>LotExt}" />
+						<table:template>
+							<Text id="_IDGenText24" text="{LotEntreposageExt}" wrapping="false" />
 						</table:template>
 					</table:Column>
 

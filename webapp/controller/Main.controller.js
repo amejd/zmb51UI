@@ -163,13 +163,8 @@ sap.ui.define([
 
                 // Check if data is bound
                 if (oBinding && oBinding.getLength() > 0) {
-                    // console.log(oBinding.oList);
-                    // debugger
                     const htmlCode = this._onGetHTMLCodeOfExcel(oArticle, oGrpMarchandise, oDivision, oMVT, oDateComptable, oBinding.oList)
-                    // const blobHtml = new Blob(['Hello world'],  { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
-                    // console.log(blobHtml);
-                    // aHyperlink.href = window.URL.createObjectURL(blobHtml);
-                    // // Setting the file name
+                    // Setting the file name
                     aHyperlink.href = `data:${dataType}, ${htmlCode}`;
                     aHyperlink.download = `Extraction-${this._formatDate(new Date())}.xls`;
                     // //triggering the function
@@ -199,10 +194,6 @@ sap.ui.define([
 
                 const url = window.location.href.split('#')[0] + href;
                 sap.m.URLHelper.redirect(url, true);
-
-                // var url = window.location.href.split('#')[0] + hash;
-                // sap.m.URLHelper.redirect(url, true);
-
             },
             onNavigateF1077: function (oEvent) {
                 const oMaterialDocument = oEvent.getSource().getText()
@@ -215,8 +206,6 @@ sap.ui.define([
                     },
                     params: { "MaterialDocument": oMaterialDocument }
                 })) || ""
-                // xnavservice.toExternal({ target: { shellHash: href } });
-
                 const url = window.location.href.split('#')[0] + href;
                 sap.m.URLHelper.redirect(url, true);
             },
@@ -229,8 +218,6 @@ sap.ui.define([
                         action: 'monitor'
                     }
                 })) || ""
-                // xnavservice.toExternal({ target: { shellHash: href } });
-
                 const url = window.location.href.split('#')[0] + href;
                 sap.m.URLHelper.redirect(url, true);
             },
@@ -247,7 +234,6 @@ sap.ui.define([
                         "Batch": oCharg
                     }
                 })) || ""
-                // xnavservice.toExternal({ target: { shellHash: href } });
 
                 const url = window.location.href.split('#')[0] + href;
                 sap.m.URLHelper.redirect(url, true);
@@ -265,8 +251,7 @@ sap.ui.define([
                         "Ebeln": oPurDoc
                     }
                 })) || ""
-                // xnavservice.toExternal({ target: { shellHash: href } });
-
+                
                 const url = window.location.href.split('#')[0] + href;
                 sap.m.URLHelper.redirect(url, true);
             },
@@ -371,7 +356,7 @@ sap.ui.define([
                                             <th style="width: 10em; border: 1px solid black;">Client</th>
                                             <th style="width: 10em; border: 1px solid black;">Nom du client</th>
                                             <th style="width: 10em; border: 1px solid black;">Fournisseur</th>
-                                            
+                                            <th style="width: 15em; border: 1px solid black;">${oResourceBundle.getText("LotExt")}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -403,7 +388,7 @@ sap.ui.define([
                                                             <td style="border: 1px solid black;text-align:center;">${e.ZClient}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.NomClient}</td>
                                                             <td style="border: 1px solid black;text-align:center;">${e.Fournisseur}</td>
-                                                                                                                     
+                                                            <td style="border: 1px solid black;text-align:center;">${e.LotEntreposageExt}</td>
                                                         </tr>`
                     )
                 }).join('')
