@@ -240,7 +240,7 @@
 						<table:template>
 							<Text id="_IDGenText23" text="{Fournisseur}" wrapping="false" />
 						</table:template>
-					</table:Column>
+					</table:Column>  
 					<table:Column id="_IDGenColumn243" width="6rem" sortProperty="LotEntreposageExt" filterProperty="LotEntreposageExt">
 						<Label id="_IDGenLabel25" text="{i18n>LotExt}" />
 						<table:template>
