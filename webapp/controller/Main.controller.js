@@ -69,10 +69,6 @@ sap.ui.define([
                     sDateComptable && Filters.push(
                         that._onGetFilters(sDateComptable, "DateComptable")
                     )
-                    debugger
-                    sLot && Filters.push(
-                        that._onGetFilters(sLot, "LotQualite")
-                    )
 
                     // READ DATA FROM THE SERVICE
                     const oModel = that.getOwnerComponent().getModel()
