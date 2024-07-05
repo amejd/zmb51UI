@@ -34,8 +34,7 @@ sap.ui.define([
                     const sMVT = oSmartTableFilter.getFilterData().MVT;
                     const sDateComptable = oSmartTableFilter.getFilterData().DateComptable;
                     const sLot = oSmartTableFilter.getFilterData().LotQualite;
-                    console.log(sGrpMarchandise);
-                    console.log(sArticle);
+           
                     if (!sGrpMarchandise && !sArticle) { 
                         MessageBox.error(that.getOwnerComponent().getModel("i18n").getResourceBundle().getText("errMsg"));
                         oDialog.close()
