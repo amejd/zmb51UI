@@ -33,6 +33,7 @@ sap.ui.define([
                     const sDivision = oSmartTableFilter.getFilterData().Division;
                     const sMVT = oSmartTableFilter.getFilterData().MVT;
                     const sDateComptable = oSmartTableFilter.getFilterData().DateComptable;
+                    const sLot = oSmartTableFilter.getFilterData().LotQualite;
                     console.log(sGrpMarchandise);
                     console.log(sArticle);
                     if (!sGrpMarchandise && !sArticle) { 
@@ -54,6 +55,7 @@ sap.ui.define([
                             that._onGetFilters(grp, "GrpMarchandise")
                         )
                     })
+                    
                     sDivision && sDivision.items.map((e) => e.text).map((div) => {
                         Filters.push(
                             that._onGetFilters(div, "Division")
@@ -66,6 +68,10 @@ sap.ui.define([
                     })
                     sDateComptable && Filters.push(
                         that._onGetFilters(sDateComptable, "DateComptable")
+                    )
+                    debugger
+                    sLot && Filters.push(
+                        that._onGetFilters(sLot, "LotQualite")
                     )
 
                     // READ DATA FROM THE SERVICE
