@@ -25,7 +25,7 @@
             <sfb:controlConfiguration>
                  <sfb:ControlConfiguration
                     id="_IDGenControlConfiguration2"
-					index="1"
+					index="0"
                     key="Article"
                     label="Article"
                     visibleInAdvancedArea="true"
@@ -33,7 +33,7 @@
                 />
                 <sfb:ControlConfiguration
                     id="_IDGenControlConfiguration5"
-					index="2"
+					index="1"
                     key="GrpMarchandise"
                     label="Groupe de Marchandise"
                     visibleInAdvancedArea="true"
@@ -42,7 +42,7 @@
                 />
                 <sfb:ControlConfiguration
                     id="_IDGenControlConfiguration3"
-					index="3"
+					index="2"
                     key="Division"
                     label="Division"
                     visibleInAdvancedArea="true"
@@ -50,7 +50,7 @@
                 />
                 <sfb:ControlConfiguration
                     id="_IDGenControlConfiguration9"
-					index="4"
+					index="3"
                     key="MVT"
                     label="Code de Mouvement"
                     visibleInAdvancedArea="true"
@@ -58,21 +58,25 @@
                 />
                 <sfb:ControlConfiguration
                     id="_IDGenControlConfiguration0"
-					index="5"
+					index="4"
                     key="DateComptable"
                     label="Date comptable"
                     visibleInAdvancedArea="true"
                     filterType="interval"
                     mandatory="mandatory" 
                  /> 
+				 <sfb:ControlConfiguration
+                    id="_IDLotQualite"
+					index="5"
+                    key="LotQualite"
+					label="Lot"
+					visibleInAdvancedArea="true"
+					filterType="multiple"
+					visible="true"
+                />
 				<sfb:ControlConfiguration
                     id="_IDLotFournisseur1"
                     key="LotFournisseur"
-					visible="false"
-                />
-				 <sfb:ControlConfiguration
-                    id="_IDLotQualite"
-                    key="LotQualite"
 					visible="false"
                 />
 				<sfb:ControlConfiguration

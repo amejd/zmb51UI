@@ -22,7 +22,6 @@ sap.ui.define([
                 // ****************** Smartfilterbar Logic starts here below ******************
                 const oSmartTableFilter = this.getView().byId("smartFilterBar");
                 oSmartTableFilter.attachSearch(function () {
-                    console.log(sap.ui.getCore().byId('application-zmb51ui-display-component---Main--smartFilterBar-filterItemControlA_-Article-valueHelpDialog-smartFilterBar-filterItemControlA_-Matnr-valueHelpDialog'));
 
                     // Set the BusyDialog to true
                     const oDialog = that.getView().byId("BusyDialog");
@@ -54,7 +53,6 @@ sap.ui.define([
                             that._onGetFilters(grp, "GrpMarchandise")
                         )
                     })
-                    
                     sDivision && sDivision.items.map((e) => e.text).map((div) => {
                         Filters.push(
                             that._onGetFilters(div, "Division")
@@ -68,17 +66,20 @@ sap.ui.define([
                     sDateComptable && Filters.push(
                         that._onGetFilters(sDateComptable, "DateComptable")
                     )
-
+                    sLot && sLot.items.map((e) => e.text).map((sLot) => {
+                        Filters.push(
+                            that._onGetFilters(sLot, "LotQualite")
+                        )
+                    })
                     // READ DATA FROM THE SERVICE
                     const oModel = that.getOwnerComponent().getModel()
                     oModel.read('/ZCDS_CN_MSEG', {
                         filters: Filters,
                         success: function (oData) {
-                            console.log(oData);
+                            // console.log(oData);
                             if (oData) {
                                 // debugger
                                 const jModel = new sap.ui.model.json.JSONModel(oData.results);
-                                console.log(oData.results);
                                 oData.results.map((entry) => {
                                     entry.DateComptable = that._formatDate(entry.DateComptable)
                                     entry.QteEnUQS = that._formatNumber(entry.QteEnUQS, 13, 2)
@@ -258,7 +259,7 @@ sap.ui.define([
             },
             _onGetFilters: function (sFieldValue, sFieldName) {
                 if (sFieldName == 'DateComptable') {
-                    console.log(sFieldValue);
+                    // console.log(sFieldValue);
                     const oFilterBT = new Filter(sFieldName, FilterOperator.BT, sFieldValue.low, sFieldValue.high);
                     return oFilterBT;
                 } else {
